@@ -39,21 +39,22 @@ def monitor_peso(): # Finalizado
     
     gato_digitado = input("Nome do gato: ")
     for gatos in lista_de_gatos:
-        if gato_digitado in gatos["nome"]:
+        if gato_digitado.lower() in gatos["nome"]:
             peso_atual = input("Peso atual do gato: ")
 
             if peso_atual.isdigit() == False:
                 return "Você não digitou um número válido"  
             ganho = int(peso_atual) - int(gatos["peso"])
+            gatos["peso"] = peso_atual
 
             if ganho < bom:
-                return "❌ Ruim!: Ganho de peso igual ou abaixo de 14g."
+                print("❌ Ruim!: Ganho de peso igual ou abaixo de 14g.")
             elif ganho >= 15 and ganho < muito_bom:
-                return "✅ Bom!: Ganho de peso entre 15g e 19g."
+                print("✅ Bom!: Ganho de peso entre 15g e 19g.")
             elif ganho >= muito_bom and ganho < excelente:
-                return "✅ Muito bom!: Ganho de peso entre 20g e 29g."
+                print("✅ Muito bom!: Ganho de peso entre 20g e 29g.")
             elif ganho >= excelente:
-                return (
+                print(
                 f"✅ Excelente!: Ganho de peso de 30g ou mais. \n" 
                 f"Atenção!: Ganho de peso excessivo! procure um veterinário se notar mudanças no comportamento de {gato_digitado}"
             )
